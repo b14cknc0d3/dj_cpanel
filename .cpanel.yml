@@ -1,5 +1,5 @@
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/anchorag/django/
+    - export DEPLOYPATH=/home/anchorag/dummycrypto/
     - /bin/cp -R * $DEPLOYPATH
 
