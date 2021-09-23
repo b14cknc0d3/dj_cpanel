@@ -24,7 +24,6 @@ env = os.environ
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env.get("SECRET_KEY")
-# SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','django-insecure-_ysatnh6l)w8j22=ldun*9)m0-$^5=cs2^zuliz91%f3r^7z39')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = int(env.get("DEBUG",0))
@@ -44,7 +43,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'ckeditor',
     'ckeditor_uploader',
-    'core'
+    'core',
+    'news'
     ]
 
 MIDDLEWARE = [
@@ -83,21 +83,25 @@ WSGI_APPLICATION = 'DummyCrypto.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-
-
 DATABASES = {
- 'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': env.get("DATABASE_NAME"),
-        'USER': env.get("DATABASE_USER"),
-        'PASSWORD': env.get("DATABASE_PASSWORD"),
-        'HOST': env.get("DATABASE_HOST","localhost"),
-        'PORT': '3306',
-        'OPTIONS': {
-            'sql_mode': 'traditional',
-        }
+    'default':{
+        'ENGINE':'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+# DATABASES = {
+#  'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': env.get("DATABASE_NAME"),
+#         'USER': env.get("DATABASE_USER"),
+#         'PASSWORD': env.get("DATABASE_PASSWORD"),
+#         'HOST': env.get("DATABASE_HOST","localhost"),
+#         'PORT': '3306',
+#         'OPTIONS': {
+#             'sql_mode': 'traditional',
+#         }
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
