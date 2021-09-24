@@ -140,15 +140,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-STATIC_LOC = env.get("STATIC_LOC", BASE_DIR)
+STATIC_LOC = "/home/anchorag/public_html"
 # STATIC
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#static-root
-STATIC_ROOT = str(STATIC_LOC / "staticfiles")
+STATIC_ROOT = str(STATIC_LOC + "/static")
 # https://docs.djangoproject.com/en/dev/ref/settings/#static-url
 STATIC_URL = "/static/"
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
-STATICFILES_DIRS = [str(STATIC_LOC / "static")]
+STATICFILES_DIRS = [str(BASE_DIR / "static")]
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
@@ -158,11 +158,11 @@ STATICFILES_FINDERS = [
 # MEDIA
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-root
-MEDIA_ROOT = str(STATIC_LOC / "media")
+MEDIA_ROOT = str(STATIC_LOC + "/media")
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-url
 MEDIA_URL = "/media/"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-CKEDITOR_UPLOAD_PATH = 'upload/ckeditor/'
+CKEDITOR_UPLOAD_PATH = STATIC_LOC+'supload/ckeditor/'
 # Bottom of the file
 EMAIL_BACKEND = env.get('EMAIL_BACKEND')
 EMAIL_HOST = env.get('EMAIL_HOST', 'smtp.gmail.com')
@@ -170,9 +170,9 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = env.get('EMAIL_PORT', 587)
 EMAIL_HOST_USER = env.get("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = env.get("EMAIL_HOST_PASSWORD")
-if 'HEROKU' in os.environ:
-    print("HEROKU")
-    import django_heroku
-    import dj_database_url
-    DATABASES = {'default': dj_database_url.config()}
-    db_from_env = dj_database_url.config(conn_max_age=500)
+# if 'HEROKU' in os.environ:
+#     print("HEROKU")
+#     import django_heroku
+#     import dj_database_url
+#     DATABASES = {'default': dj_database_url.config()}
+#     db_from_env = dj_database_url.config(conn_max_age=500)
