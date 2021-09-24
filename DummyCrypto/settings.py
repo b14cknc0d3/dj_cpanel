@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+
 load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,29 +24,26 @@ env = os.environ
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env.get("SECRET_KEY","django-insecure-k=0%u66enunrrljktr+hqo5duew0$qc%3$w(rhpi$d6o9lr(nn")
+SECRET_KEY = env.get(
+    "SECRET_KEY",
+    "django-insecure-k=0%u66enunrrljktr+hqo5duew0$qc%3$w(rhpi$d6o9lr(nn")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = int(env.get("DEBUG",0))
+DEBUG = int(env.get("DEBUG", 0))
 
-ALLOWED_HOSTS = ['dummy-crypto.herokuapp.com','127.0.0.1','localhost','anchoragegwadar.com']
-
+ALLOWED_HOSTS = [
+    'dummy-crypto.herokuapp.com', '127.0.0.1', 'localhost',
+    'anchoragegwadar.com'
+]
 
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'rest_framework',
-    'ckeditor',
-    'ckeditor_uploader',
-    'core',
-    'news'
-    ]
+    'django.contrib.admin', 'django.contrib.auth',
+    'django.contrib.contenttypes', 'django.contrib.sessions',
+    'django.contrib.messages', 'django.contrib.staticfiles', 'rest_framework',
+    'ckeditor', 'ckeditor_uploader', 'core', 'news'
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -71,7 +69,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                
             ],
         },
     },
@@ -79,13 +76,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'DummyCrypto.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default':{
-        'ENGINE':'django.db.backends.sqlite3',
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
@@ -108,19 +104,22 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -135,18 +134,17 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-STATIC_LOC = env.get("STATIC_LOC",BASE_DIR)
+STATIC_LOC = env.get("STATIC_LOC", BASE_DIR)
 # STATIC
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#static-root
-STATIC_ROOT = str(BASE_DIR/ "staticfiles")
+STATIC_ROOT = str(STATIC_LOC / "staticfiles")
 # https://docs.djangoproject.com/en/dev/ref/settings/#static-url
 STATIC_URL = "/static/"
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
@@ -167,9 +165,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CKEDITOR_UPLOAD_PATH = 'upload/ckeditor/'
 # Bottom of the file
 EMAIL_BACKEND = env.get('EMAIL_BACKEND')
-EMAIL_HOST = env.get('EMAIL_HOST','smtp.gmail.com')
+EMAIL_HOST = env.get('EMAIL_HOST', 'smtp.gmail.com')
 EMAIL_USE_TLS = True
-EMAIL_PORT = env.get('EMAIL_PORT',587)
+EMAIL_PORT = env.get('EMAIL_PORT', 587)
 EMAIL_HOST_USER = env.get("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = env.get("EMAIL_HOST_PASSWORD")
 if 'HEROKU' in os.environ:
