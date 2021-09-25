@@ -57,8 +57,8 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 CORS_ALLOWED_ORIGINS = [
-            "https://example.com",
-                "https://sub.example.com",
+            "http://anchoragegwadar.com",
+                "https://anchoragegwadar.com",
                     "http://localhost:9001",
                         "http://127.0.0.1:9000",
                         ]
