@@ -1,5 +1,6 @@
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/anchorag/dummycrypto/
+    - export DEPLOYPATH=/home/anchorag/anchoragegwadar_server/
     - /bin/cp -R * $DEPLOYPATH
-
+    - source /home/anchorag/virtualenv/anchoragegwadar_server/3.8/bin/activate && pip install -r  /home/anchorag/anchoragegwadar_server/requirements.txt && python manage.py collectstatic --no-input && python manage.py migrate
+    
