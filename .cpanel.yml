@@ -1,5 +1,5 @@
 deployment:
   tasks:
-    # - export DEPLOYPATH=/home/anchorag/anchoragegwadar_server/
-    # - /bin/cp -R * $DEPLOYPATH
-    - source /home/anchorag/virtualenv/ac_server/3.8/bin/activate && cd /home/anchorag/ac_server && pip install -r  /home/anchorag/ac_server/requirements.txt && python manage.py collectstatic --no-input && python manage.py migrate
+    - export DEPLOYPATH=/home/anchorag/ac_server/
+    - /bin/cp -R * $DEPLOYPATH
+    - source /home/anchorag/virtualenv/anchoragegwadar_server/3.8/bin/activate && pip install -r  /home/anchorag/ac_server/requirements.txt && python manage.py collectstatic --no-input && python manage.py migrate
